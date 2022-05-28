@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block headline_image %}
+    https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_960_720.jpg
+{% endblock %}
+
+{% block headline %}
+    Join and Enjoy Best Music Collection
+{% endblock %}
+{% block content %}
+    <br>
+    <div class="container">
+        <div class="text-center">
+            <h2><u>Register Today</u></h2>
+        </div>
+
+        <form class="mx-1 mx-md-4" method="post">
+            {{ form | crispy }}
+            {% csrf_token %}
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                <button class="btn btn-lg btn-success btn-block"  type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

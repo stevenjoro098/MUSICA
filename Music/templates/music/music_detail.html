@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+  <div class="container">
+    <div class="card mb-3" >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ object.image.url }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h4 class="card-title">{{ object.song_name }}</h4>
+            <h5 class="card-subtitle mb-2 text-muted"><strong>Album:</strong><small class="text-muted"> {{ object.album }}</small></h5>
+            <p class="card-text">Song By: {{ object.artist | capfirst }}</p>
+            <form method="post">
+              {% csrf_token %}
+              <button class="btn btn-success">Play</button>
+              <button type="submit" class="btn btn-primary" value="{{ object.pk }}" name="like">Like</button>
+
+            </form>
+            <span class="badge rounded-pill bg-warning">{{ song_likes }} Likes</span>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

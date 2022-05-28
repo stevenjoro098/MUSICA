@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block headline_image %}
+    https://cdn.pixabay.com/photo/2016/11/23/00/43/audio-1851517_960_720.jpg
+{% endblock %}
+
+{% block headline %}
+    Albums By {{ request.user.first_name }} {{ request.user.last_name }}
+{% endblock %}
+{% block content %}
+    <br>
+    <div class="container">
+        <h5>Email: {{request.user.email }}</h5>
+        <ol class="list-group list-group-numbered">
+            {% for album in albums %}
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ album.album_name }}</div>
+                            <div class="text-muted"><strong>Created on: </strong> {{ album.uploaded }}</div>
+                        <p><strong>Songs:</strong> {{ album.album_songs.count }}</p>
+                    </div>
+
+                    <span class="badge bg-primary rounded-pill">Likes: {{ album.total_likes }}</span>
+                </li>
+                <br>
+            {% endfor %}
+        </ol>
+
+    </div>
+<br>
+{% endblock %}

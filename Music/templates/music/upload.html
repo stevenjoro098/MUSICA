@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block headline_image %}
+    https://cdn.pixabay.com/photo/2017/03/09/20/53/microphone-2130806_960_720.jpg
+{% endblock %}
+
+{% block headline_button %}
+    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'upload_album' %}">Create Album</a>
+    <a class="btn btn-outline-light btn-lg px-4" href="#!">My Collection</a>
+{% endblock %}
+
+{% block headline %}
+    New Music to Your Collection
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="card" style='width 18rem;'>
+            <div class="card-body">
+                <div class="card-title"><h3>Upload Music</h3></div>
+                <form method="post" enctype="multipart/form-data">
+                {{ form|crispy}}
+                {% csrf_token %}
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button class="btn btn-lg btn-success btn-block"  type="submit">Upload Song</button>
+                </div>
+            </form>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
